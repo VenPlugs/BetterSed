@@ -1,18 +1,9 @@
 /* BetterSed, a Powercord plugin to edit your messages like a boss
  * Copyright (C) 2021 Vendicated
  *
- * BetterSed is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * BetterSed is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with BetterSed.  If not, see <https://www.gnu.org/licenses/>.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
 const { Plugin } = require("powercord/entities");
@@ -33,7 +24,7 @@ module.exports = class BetterSed extends Plugin {
         // Escape regex reserved chars
         const s = msg.content.charAt(1).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         // Sed pattern matcher: s/matcher -> anythingbutnonescapedsep/replacer -> anythingbutnonescapedsed/flags - idk if i should be proud of myself or disgusted for this regex
-        const re = new RegExp(`s${s}(([^${s}\\\\]|\\\\${s}|\\\\[^${s}])+)${s}(([^${s}\\\\]|\\\\${s}|\\\\[^${s}])*)${s}([gi])`, "g");
+        const re = new RegExp(`s${s}(([^${s}\\\\]|\\\\${s}|\\\\[^${s}])+)${s}(([^${s}\\\\]|\\\\${s}|\\\\[^${s}])*)${s}([gi]*)`, "g");
         const seds = [];
         let match;
         while ((match = re.exec(msg.content))) {

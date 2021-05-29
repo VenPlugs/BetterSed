@@ -3,5 +3,5 @@
   "version": "0.0.1",
   "description": "Edit your messages like a boss with sed https://en.wikipedia.org/wiki/Sed#Usage",
   "author": "Vendicated",
-  "license": "GPL-3.0"
+  "license": "Apache-2.0"
 }
